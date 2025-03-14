@@ -23,6 +23,33 @@ def postorder_traversal(root):
         postorder_traversal(root.right)
         print(root.value, end=" ")
 
+#REVERSE TRAVERSAL
+#Reversed In-Order
+def reverse_inorder_traversal(root):
+    if root:
+        reverse_inorder_traversal(root.right)
+        print(root.value, end=" ")
+        reverse_inorder_traversal(root.left)
+
+#Reversed Pre-Order - first visit
+def reverse_preorder_traversal(root):
+    if root:
+        print(root.value, end=" ")
+        reverse_preorder_traversal(root.right)
+        reverse_preorder_traversal(root.left)
+#Reversed Post Order - last visit
+def reverse_postorder_traversal(root):
+    if root:
+        reverse_postorder_traversal(root.right)
+        reverse_postorder_traversal(root.left)
+        print(root.value, end=" ")
+
+def swap_subtrees(root):
+    if root:
+        root.left, root.right = root.right, root.left
+        swap_subtrees(root.left)
+        swap_subtrees(root.right)
+
 
 root = TreeNode(1)
 root.left = TreeNode(2)
@@ -37,4 +64,14 @@ inorder_traversal(root)
 print("\nPre-order Traversal")
 preorder_traversal(root)
 print("\nPost order Traversal")
+postorder_traversal(root)
+
+print("\n\nSwapping Subtrees...")
+swap_subtrees(root)
+
+print("In-order Traversal After Swap")
+inorder_traversal(root)
+print("\nPre-order Traversal After Swap")
+preorder_traversal(root)
+print("\nPost order Traversal After Swap")
 postorder_traversal(root)
